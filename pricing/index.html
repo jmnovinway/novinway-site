@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing | Novinway - Neurodivergent Family Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-deep: #131F38;
+    --navy-mid: #243556;
+    --coral: #E8998D;
+    --coral-soft: #F2B5AC;
+    --coral-bg: rgba(232, 153, 141, 0.08);
+    --warm-white: #FDF8F5;
+    --cream: #FAF3EE;
+    --sage: #7A9E8A;
+    --sage-bg: rgba(122, 158, 138, 0.08);
+    --text-primary: #1B2A4A;
+    --text-secondary: #4A5568;
+    --text-tertiary: #7A8599;
+    --border: #E5DED7;
+    --border-light: #EDE8E3;
+    --card-shadow-hover: 0 12px 40px rgba(27, 42, 74, 0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    text-wrap: pretty;
+  }
+  h1,h2,h3,h4{text-wrap:balance}
+
+  /* ══════════════════════════════════════
+     HERO
+     ══════════════════════════════════════ */
+  .hero {
+    background: var(--navy);
+    color: white;
+    padding: 120px 48px 88px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%; left: -20%;
+    width: 140%; height: 180%;
+    background: radial-gradient(ellipse at 25% 30%, rgba(232,153,141,0.05) 0%, transparent 55%),
+                radial-gradient(ellipse at 75% 70%, rgba(122,158,138,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.4rem;
+    font-weight: 400;
+    line-height: 1.12;
+    margin-bottom: 24px;
+    letter-spacing: -0.015em;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.65);
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* ══════════════════════════════════════
+     INTRO
+     ══════════════════════════════════════ */
+  .intro-block {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 72px 48px 24px;
+    text-align: center;
+  }
+  .intro-block p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  /* ══════════════════════════════════════
+     SECTION LAYOUT
+     ══════════════════════════════════════ */
+  .pricing-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 48px 64px;
+  }
+
+  /* Side-by-side: section header left, cards right */
+  .section-split {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .section-head-side {
+    position: sticky;
+    top: 40px;
+  }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 12px;
+  }
+
+  .section-head-side h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .section-head-side p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .section-divider {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .section-divider hr {
+    border: none;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ══════════════════════════════════════
+     CARDS
+     ══════════════════════════════════════ */
+  .cards-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cards-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-3px);
+  }
+  .card-top-accent {
+    height: 4px;
+    width: 100%;
+  }
+  .accent-coral { background: var(--coral); }
+  .accent-navy { background: var(--navy); }
+  .accent-sage { background: var(--sage); }
+
+  .card-body { padding: 32px 28px 28px; flex: 1; display: flex; flex-direction: column; }
+  .card-body .btn { margin-top: auto; }
+
+  .card-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 14px;
+  }
+  .tag-coral { background: var(--coral-bg); color: #C47A6E; }
+  .tag-navy { background: rgba(27,42,74,0.06); color: var(--navy-mid); }
+  .tag-sage { background: var(--sage-bg); color: #5C7D6A; }
+
+  .card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+  .card-desc {
+    font-size: 0.88rem;
+    color: var(--text-tertiary);
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  /* Price */
+  .price-area {
+    padding-bottom: 22px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    margin-bottom: 3px;
+  }
+  .price-big {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .price-unit {
+    font-size: 0.95rem;
+    color: var(--text-tertiary);
+  }
+  .price-note {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+
+  /* Features */
+  .features {
+    list-style: none;
+    margin-bottom: 26px;
+  }
+  .features li {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    padding: 7px 0 7px 28px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .features li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 13px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--coral) url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 8L7 11L12 5.5' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;
+  }
+
+  /* Best for */
+  .for-you {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 26px;
+  }
+  .for-you-head {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 5px;
+  }
+  .for-you p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* Buttons */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+  }
+  .btn-solid {
+    background: var(--navy);
+    color: white;
+  }
+  .btn-solid:hover {
+    background: var(--navy-mid);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(27,42,74,0.2);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--border);
+  }
+  .btn-outline:hover {
+    border-color: var(--navy);
+    background: var(--navy);
+    color: white;
+  }
+
+  /* Callout */
+  .callout-box {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+  .callout-box h4 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .callout-box p {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* Engagement grid */
+  .engagement-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .engagement-item {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .engagement-item h4 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .engagement-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .engagement-item p {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    line-height: 1.45;
+  }
+
+  /* ══════════════════════════════════════
+     PERSPECTIVE
+     ══════════════════════════════════════ */
+  .perspective-section {
+    background: var(--navy);
+    color: white;
+    padding: 80px 48px;
+  }
+  .perspective-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .perspective-left .section-eyebrow { color: var(--coral-soft); }
+  .perspective-left h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    color: white;
+    line-height: 1.2;
+  }
+  .perspective-right p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+  }
+  .perspective-right p:last-child { margin-bottom: 0; }
+  .perspective-stat {
+    color: var(--coral-soft);
+    font-weight: 600;
+  }
+
+  /* ══════════════════════════════════════
+     FULL-TIME
+     ══════════════════════════════════════ */
+  .fulltime-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 48px;
+  }
+  .fulltime-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 40px 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+  .fulltime-text { flex: 1; max-width: 640px; }
+  .fulltime-text h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .fulltime-text p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .fulltime-cta {
+    flex-shrink: 0;
+  }
+  .fulltime-cta .btn {
+    width: auto;
+    padding: 14px 36px;
+  }
+
+  /* ══════════════════════════════════════
+     FAQ - Two column on desktop
+     ══════════════════════════════════════ */
+  .faq-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 72px 48px;
+  }
+  .faq-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .faq-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 22px 0;
+  }
+  .faq-q {
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    user-select: none;
+  }
+  .faq-q::after {
+    content: '+';
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-tertiary);
+    flex-shrink: 0;
+  }
+  .faq-item.open .faq-q::after { content: '\2212'; }
+  .faq-a {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+  }
+  .faq-item.open .faq-a {
+    max-height: 400px;
+    padding-top: 14px;
+  }
+
+  /* ══════════════════════════════════════
+     BOTTOM CTA
+     ══════════════════════════════════════ */
+  .bottom-cta {
+    background: var(--cream);
+    text-align: center;
+    padding: 80px 48px;
+  }
+  .bottom-cta h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+  .bottom-cta p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .bottom-cta .btn {
+    width: auto;
+    display: inline-block;
+    padding: 16px 48px;
+    font-size: 1rem;
+  }
+
+  /* ══════════════════════════════════════
+     ANIMATION
+     ══════════════════════════════════════ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card { animation: fadeUp 0.5s ease both; }
+  .cards-pair .card:nth-child(2) { animation-delay: 0.1s; }
+
+  .nav{position:absolute;top:0;left:0;right:0;z-index:10;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;background:#1B2A4A}
+  .nav-logo{text-decoration:none}
+    .nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:'DM Sans',sans-serif}
+  .nav-star{flex-shrink:0}
+  .nav-wordmark{display:block;font-family:'Outfit',sans-serif;font-size:1.45rem;font-weight:800;color:#fff;letter-spacing:0.04em;text-transform:uppercase}
+  .nav-subtitle{display:block;font-size:0.47rem;font-weight:500;letter-spacing:0.18em;color:rgba(255,255,255,0.45);margin-top:0px;text-transform:uppercase}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-links .nav-cta{background:rgba(255,255,255,.12);color:#fff;padding:10px 22px;border-radius:7px;font-weight:600;border:1px solid rgba(255,255,255,.15)}
+
+
+  /* ═══════ HAMBURGER TOGGLE ═══════ */
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:200}
+  .nav-toggle span{display:block;width:22px;height:2px;background:#fff;margin:5px 0;transition:all .3s}
+  .nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .nav-toggle.active span:nth-child(2){opacity:0}
+  .nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+  /* ═══════ RESPONSIVE ═══════ */
+  @media(max-width:768px){
+    .nav{padding:16px 20px}
+    .nav-logo svg,.nav-star{width:28px;height:28px}
+    .nav-wordmark{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:800}
+    .nav-subtitle{font-size:.38rem;letter-spacing:.12em}
+    .nav-toggle{display:block}
+    .nav-links{
+      display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+      background:var(--navy);flex-direction:column;align-items:center;
+      justify-content:center;gap:28px;z-index:150;
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{font-size:1.1rem;color:rgba(255,255,255,.85)}
+    .nav-links .nav-cta{padding:14px 32px;font-size:1rem}
+    
+
+
+    .hero{padding:120px 20px 64px;min-height:auto}
+    .hero h1{font-size:2rem}
+    .hero p{font-size:.9rem;max-width:100%}
+    .hero-inner{max-width:100%;text-align:left}
+    .hero-cta{font-size:.9rem;padding:14px 32px}
+
+    section[style*="padding"]{padding-left:20px !important;padding-right:20px !important}
+
+    [style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns: 1fr 1fr"]{
+      grid-template-columns:1fr !important;
+    }
+    [style*="padding:44px 48px"]{padding:36px 20px 24px !important}
+
+    .problem-grid,.sol-grid,.better-grid,.how-grid,.trust-grid,
+    .pricing-grid,.founders-row,.founder-row,.offer-grid,.role-columns,
+    .cards-pair,.origin-grid,.perspective-grid,.why-grid,
+    .scope-grid,.how-refer-grid,.provider-faq-grid{
+      grid-template-columns:1fr !important;
+    }
+    .faq-layout{grid-template-columns:1fr !important;gap:0 !important}
+    .faq-nav{display:none}
+    .main-layout{grid-template-columns:1fr !important}
+    .process-grid{grid-template-columns:1fr 1fr !important}
+    .field-row{grid-template-columns:1fr !important}
+    .field-row-3{flex-direction:column}
+
+    .problem-sticky,.origin-left,.perspective-left,.why-left,.scope-left{position:static}
+
+    h2{font-size:1.5rem !important}
+    .bottom-cta h2{font-size:1.6rem !important}
+    .hero-content h1{font-size:2rem !important}
+
+    .hero-subtitle{font-size:.82rem}
+    .btn-coral{padding:14px 36px;font-size:.92rem}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><svg class="nav-star" width="38" height="38" viewBox="0 0 100 112" fill="none"><path d="M50 0 L58 48 L100 56 L58 64 L50 112 L42 64 L0 56 L42 48 Z" fill="#E8998D"/></svg><div style="line-height:1"><span class="nav-wordmark">NOVINWAY</span><span class="nav-subtitle">NEURODIVERGENT FAMILY SUPPORT</span></div></a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/providers">For Providers</a>
+    <a href="/faq">FAQ</a>
+    <a href="/careers">Careers</a>
+    <a href="/contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Transparent pricing.<br>No surprises.</h1>
+    <p>Every service is designed around your family's actual needs. Take what helps. Skip what doesn't. No long-term contracts.</p>
+  </div>
+</section>
+
+<!-- ════════ INTRO ════════ -->
+<div class="intro-block">
+  <p>Novinway offers two services that work independently or together: specialized childcare and family support coordination. Take what you need. Skip what you don't.</p>
+</div>
+
+<!-- ══════════════════════════════════════
+     CHILDCARE
+     ══════════════════════════════════════ -->
+<section class="pricing-section">
+  <div class="section-split">
+    <div class="section-head-side">
+      <div class="section-eyebrow">Childcare</div>
+      <h2>Your child's caregiver</h2>
+      <p>In-home care and companionship from someone trained specifically for your child. Every caregiver is matched based on your child's Care Profile and supervised by a neuroaffirming, board-certified behavior analyst.</p>
+    </div>
+
+    <div class="cards-area">
+      <div class="cards-pair">
+        <!-- FLEX -->
+        <div class="card">
+          <div class="card-top-accent accent-coral"></div>
+          <div class="card-body">
+            <div class="card-tag tag-coral">Flexible</div>
+            <h3>Flex</h3>
+            <p class="card-desc">On-demand care when you need it. No monthly commitment.</p>
+            <div class="price-area">
+              <div class="price-row">
+                <span class="price-big">$45</span>
+                <span class="price-unit">/hr</span>
+              </div>
+              <p class="price-note">+ $50 booking fee per visit</p>
+              <p class="price-note">4-hour minimum per booking</p>
+            </div>
+            <ul class="features">
+              <li>Caregiver matched to your child's needs</li>
+              <li>Care Profile built before the first visit</li>
+              <li>Behavior analyst-designed training</li>
+              <li>Book as needed, cancel with 48-hour notice</li>
+            </ul>
+            <div class="for-you">
+              <div class="for-you-head">Best for</div>
+              <p>Date nights, appointments, occasional respite, or trying Novinway for the first time.</p>
+            </div>
+            <a href="#contact" class="btn btn-outline">Get started</a>
+          </div>
+        </div>
+
+        <!-- MEMBERSHIP -->
+        <div class="card">
+          <div class="card-top-accent accent-navy"></div>
+          <div class="card-body">
+            <div class="card-tag tag-navy">Membership</div>
+            <h3>Monthly Member</h3>
+            <p class="card-desc">Consistent care with a lower rate and a dedicated caregiver.</p>
+            <div class="price-area">
+              <div class="price-row">
+                <span class="price-big">$35</span>
+                <span class="price-unit">/hr</span>
+              </div>
+              <p class="price-note">+ $199/month membership</p>
+              <p class="price-note">2-hour minimum per booking</p>
+            </div>
+            <ul class="features">
+              <li>Dedicated caregiver matching</li>
+              <li>Care Profile built before the first visit</li>
+              <li>Priority scheduling and replacement guarantee</li>
+              <li>Behavior analyst-designed training and oversight</li>
+              <li>Month-to-month, cancel anytime</li>
+            </ul>
+            <div class="for-you">
+              <div class="for-you-head">Best for</div>
+              <p>Families who need regular weekly care to maintain a work schedule, routine, or consistent respite.</p>
+            </div>
+            <a href="#contact" class="btn btn-solid">Get started</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOUNDING FAMILY NOTE -->
+      <p style="text-align: center; font-size: 0.85rem; color: var(--text-secondary); margin-top: 16px; margin-bottom: 8px;"><strong style="color: var(--text-primary);">Founding family rate:</strong> Standard membership is $299/mo. Founding families pay $199/mo.</p>
+
+      <!-- PREPAID -->
+      <div class="callout-box">
+        <h4>Prepaid hour packs</h4>
+        <p>Purchase a 16-hour pack at the Flex rate ($45/hr) with a single $50 booking fee for the entire pack. Use the hours on your schedule. A good option if you need more than a single booking but aren't ready for a monthly membership.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- ══════════════════════════════════════
+     FAMILY SUPPORT
+     ══════════════════════════════════════ -->
+<section class="pricing-section">
+  <div class="section-split">
+    <div class="section-head-side">
+      <div class="section-eyebrow">Family Support</div>
+      <h2>Your family's coordinator</h2>
+      <p>A dedicated coordinator who takes over the neurodivergent-specific logistics you're currently managing alone.</p>
+    </div>
+
+    <div class="cards-area">
+      <div class="card">
+        <div class="card-top-accent accent-sage"></div>
+        <div class="card-body">
+          <div class="card-tag tag-sage">Coordination</div>
+          <h3>Family Support</h3>
+          <p class="card-desc">Monthly coordination that handles the logistics so you don't have to.</p>
+          <div class="price-area">
+            <div class="price-row">
+              <span class="price-big">$199</span>
+              <span class="price-unit">/month</span>
+            </div>
+            <p class="price-note">$99/mo when paired with a childcare membership</p>
+          </div>
+          <ul class="features">
+            <li>Provider communication - follow-ups, schedule changes, and requests so you're not the one making every call</li>
+            <li>Waiver, SSI, DDA, and other benefits paperwork</li>
+            <li>Benefits discovery - programs and entitlements you may not know about</li>
+            <li>Waitlist management and regular follow-up</li>
+            <li>Program research: camps, adaptive recreation, local resources</li>
+            <li>Fitting your childcare schedule around therapy, school, and appointments</li>
+            <li>Transportation and appointment logistics</li>
+            <li>School coordination on non-IEP logistics</li>
+            <li>Master calendar across all providers and services</li>
+            <li>Vetted referrals to advocates, attorneys, and specialists when you need them</li>
+          </ul>
+          <div class="for-you">
+            <div class="for-you-head">Best for</div>
+            <p>Families spending hours each week coordinating providers, managing waitlists, handling paperwork, and navigating logistics that exist specifically because their child is neurodivergent.</p>
+          </div>
+          <a href="#contact" class="btn btn-outline">Get started</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ PERSPECTIVE ════════ -->
+<section class="perspective-section">
+  <div class="perspective-inner">
+    <div class="perspective-left">
+      <div class="section-eyebrow">Perspective</div>
+      <h2>What does it cost to not have this?</h2>
+    </div>
+    <div class="perspective-right">
+      <p>More than half of parents raising neurodivergent children reduce their work hours or leave the workforce entirely - and the financial impact falls almost entirely on mothers. The cost compounds: <span class="perspective-stat">$500,000 to $1,000,000+</span> in lifetime earnings, retirement, and career momentum. For the mothers still working, those raising children with autism earn <span class="perspective-stat">35-56% less</span> than other mothers, solely because the logistics leave no room for anything else.</p>
+      <p>Novinway's childcare and coordination together cost a fraction of one lost or reduced month of income. The question isn't whether you can afford support. It's whether you can afford not to have it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FULL-TIME ════════ -->
+<section class="fulltime-section">
+  <div class="fulltime-card">
+    <div class="fulltime-text">
+      <h3>Need full-time care?</h3>
+      <p>For families who need a dedicated caregiver 30+ hours per week, we build custom arrangements with consistent scheduling, a primary and backup caregiver, and pricing structured for the commitment. Every full-time placement includes behavior analyst oversight and a comprehensive Care Profile.</p>
+    </div>
+    <div class="fulltime-cta">
+      <a href="#contact" class="btn btn-solid">Let's talk</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FAQ ════════ -->
+<section class="faq-section">
+  <div class="faq-header">
+    <h2>Common questions</h2>
+  </div>
+  <div class="faq-grid">
+    <div>
+      <div class="faq-item">
+        <div class="faq-q">What is a Care Profile?</div>
+        <div class="faq-a">Before your first visit, our behavior analyst gathers information about your child's routines, preferences, communication style, sensory needs, and what's worked (and hasn't) with previous caregivers. This profile becomes the training foundation for your caregiver. It's updated as your child grows and needs change.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need both services?</div>
+        <div class="faq-a">No. Each service works independently. Some families only need childcare. Some only need coordination. Some use both. If you do use both, childcare members receive Family Support at a reduced rate - but there's no requirement to bundle.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What happens if my caregiver is unavailable?</div>
+        <div class="faq-a">Membership families receive a replacement guarantee. If your primary caregiver can't make a scheduled shift, we provide a trained backup who has access to your child's Care Profile. Flex families receive best-effort backup support.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why don't you accept insurance?</div>
+        <div class="faq-a">Insurance covers clinical services like ABA therapy. Novinway is entirely nonclinical - we provide childcare and family coordination, not therapy. Operating outside the insurance model lets us stay flexible and focused on your family's actual needs rather than what a plan will authorize.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I use my FSA or dependent care benefits?</div>
+        <div class="faq-a">Many families are able to use dependent care flexible spending accounts (FSAs) or other pretax benefits to help cover the cost of childcare services. Check with your plan administrator for eligibility details.</div>
+      </div>
+    </div>
+    <div>
+      <div class="faq-item">
+        <div class="faq-q">What does the Family Support Coordinator actually do?</div>
+        <div class="faq-a">Whatever neurodivergent-specific logistics you're currently handling yourself. That might include provider scheduling, waiver applications, waitlist follow-up, program research, transportation logistics, or coordinating your childcare schedule around therapy and school. The scope depends on your family's situation - if a neurotypical family wouldn't have the problem, it's in scope.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I need an advocate or attorney?</div>
+        <div class="faq-a">Your Family Support Coordinator maintains relationships with vetted IEP advocates, special education attorneys, and other specialists in the DC metro area. When a situation comes up that needs that kind of support - an IEP meeting, a school placement dispute, a legal question - they connect you to the right person. You don't have to find them yourself.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can you help me navigate clinical options?</div>
+        <div class="faq-a">Novinway is entirely nonclinical - we don't provide therapy, and we don't direct clinical decisions. But your Family Support Coordinator maintains relationships with vetted specialists across the DC metro area and can connect you to the right person when you need one.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is there paperwork to get started?</div>
+        <div class="faq-a">Yes. Before services begin, families sign a service agreement covering expectations, scheduling policies, and liability. We walk you through everything during your first conversation - no surprises.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Are there contracts or cancellation fees?</div>
+        <div class="faq-a">No long-term contracts for any service. Childcare memberships and Family Support are both month-to-month - cancel either with 30 days' notice. Individual membership bookings can be cancelled with 24-hour notice at no penalty, and we work with families on emergencies and illness. Flex bookings require 48-hour notice.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ BOTTOM CTA ════════ -->
+<section class="bottom-cta" id="contact">
+  <h2>Tell us about your family</h2>
+  <p>Every family's situation is different. Let's figure out what kind of support would be the right fit.</p>
+  <a href="/contact" class="btn btn-solid">Schedule a call</a>
+</section>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    // Only close siblings within the same column
+    const column = item.parentElement;
+    column.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+
+
+<!-- FOOTER -->
+<footer style="background:#141F37;padding:44px 48px 28px;color:#fff;font-family:'DM Sans',sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:36px;">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <a href="/" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">Home</a>
+        <a href="/about" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">About</a>
+        <a href="/pricing" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">Pricing</a>
+        <a href="/providers" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">For Providers</a>
+        <a href="/faq" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">FAQ</a>
+        <a href="/careers" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">Careers</a>
+        <a href="/contact" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">Contact</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <a href="mailto:hello@novinway.com" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">hello@novinway.com</a>
+        <a href="tel:+13014859834" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">(301) 485-9834</a>
+        <span style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5;margin-top:4px;">451 N Hungerford Dr, STE 119-261<br>Rockville, MD 20850</span>
+        <span style="font-size:13px;color:rgba(255,255,255,0.45);margin-top:2px;">Serving DC, Maryland, and Virginia</span>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:16px;">
+      <p style="font-size:12px;color:rgba(255,255,255,0.3);margin:0 0 6px;">Novinway is a private-pay childcare and family support service. We do not provide medical, therapeutic, or clinical services.</p>
+      <p style="font-size:12px;color:r

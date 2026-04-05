@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ | Novinway - Neurodivergent Family Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-mid: #243556;
+    --coral: #E8998D;
+    --coral-soft: #F2B5AC;
+    --warm-white: #FDF8F5;
+    --cream: #FAF3EE;
+    --sage: #7A9E8A;
+    --text-primary: #1B2A4A;
+    --text-secondary: #4A5568;
+    --text-tertiary: #7A8599;
+    --border: #E5DED7;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--text-primary);-webkit-font-smoothing:antialiased;text-wrap:pretty}
+  h1,h2,h3,h4{text-wrap:balance}
+
+  .nav{position:absolute;top:0;left:0;right:0;z-index:10;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;background:#1B2A4A}
+  .nav-logo{text-decoration:none}
+    .nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:'DM Sans',sans-serif}
+  .nav-star{flex-shrink:0}
+  .nav-wordmark{display:block;font-family:'Outfit',sans-serif;font-size:1.45rem;font-weight:800;color:#fff;letter-spacing:0.04em;text-transform:uppercase}
+  .nav-subtitle{display:block;font-size:0.47rem;font-weight:500;letter-spacing:0.18em;color:rgba(255,255,255,0.45);margin-top:0px;text-transform:uppercase}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-links .nav-cta{background:rgba(255,255,255,.12);color:#fff;padding:10px 22px;border-radius:7px;font-weight:600;border:1px solid rgba(255,255,255,.15)}
+
+  .section-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral-soft);margin-bottom:12px}
+
+  .hero{background:var(--navy);color:#fff;padding:160px 48px 100px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-40%;left:-15%;width:130%;height:180%;background:radial-gradient(ellipse at 30% 40%,rgba(232,153,141,.04) 0%,transparent 55%);pointer-events:none}
+  .hero-inner{max-width:760px;margin:0 auto;position:relative;text-align:center}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:3.2rem;font-weight:400;line-height:1.12;margin-bottom:20px}
+  .hero p{font-size:1.1rem;line-height:1.7;color:rgba(255,255,255,.6);max-width:560px;margin:0 auto}
+
+  /* LAYOUT */
+  .faq-layout{max-width:1200px;margin:0 auto;padding:72px 48px 80px;display:grid;grid-template-columns:220px 1fr;gap:64px;align-items:start}
+
+  /* SIDEBAR NAV */
+  .faq-nav{position:sticky;top:40px}
+  .faq-nav-item{
+    display:block;font-size:.88rem;font-weight:500;color:var(--text-tertiary);
+    text-decoration:none;padding:10px 0;border-left:2px solid transparent;
+    padding-left:16px;transition:all .2s;cursor:pointer;
+  }
+  .faq-nav-item:hover{color:var(--text-primary)}
+  .faq-nav-item.active{color:var(--text-primary);border-left-color:var(--coral);font-weight:600}
+
+  .faq-nav-cta{
+    display:block;margin-top:28px;padding:14px 20px;
+    background:var(--cream);border:1px solid var(--border);border-radius:10px;
+    text-decoration:none;transition:background .2s;
+  }
+  .faq-nav-cta:hover{background:#EDE5DC}
+  .faq-nav-cta h4{font-size:.88rem;font-weight:600;color:var(--text-primary);margin-bottom:4px}
+  .faq-nav-cta p{font-size:.78rem;color:var(--text-tertiary);line-height:1.45}
+
+  /* FAQ CONTENT */
+  .faq-content{}
+  .faq-group{margin-bottom:48px;scroll-margin-top:40px}
+  .faq-group:last-child{margin-bottom:0}
+  .faq-group-label{
+    font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:6px 12px;border-radius:5px;display:inline-block;margin-bottom:16px;
+  }
+  .label-general{background:rgba(27,42,74,.06);color:var(--navy)}
+  .label-childcare{background:var(--cream);color:#C47A6E}
+  .label-support{background:rgba(122,158,138,.1);color:#5C7D6A}
+  .label-advocacy{background:rgba(232,153,141,.08);color:#C47A6E}
+  .label-logistics{background:rgba(27,42,74,.06);color:var(--text-tertiary)}
+
+  .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+  .faq-item:first-child{border-top:1px solid var(--border)}
+  .faq-q{
+    font-size:.95rem;font-weight:600;cursor:pointer;display:flex;
+    justify-content:space-between;align-items:center;gap:16px;user-select:none;
+  }
+  .faq-q::after{content:'+';font-size:1.2rem;font-weight:400;color:var(--text-tertiary);flex-shrink:0}
+  .faq-item.open .faq-q::after{content:'\2212'}
+  .faq-a{
+    font-size:.9rem;color:var(--text-secondary);line-height:1.7;
+    max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;
+  }
+  .faq-item.open .faq-a{max-height:500px;padding-top:14px}
+
+  /* BOTTOM CTA */
+  .bottom-cta{background:var(--cream);text-align:center;padding:80px 48px}
+  .bottom-cta h2{font-family:'DM Serif Display',serif;font-size:2rem;font-weight:400;margin-bottom:12px}
+  .bottom-cta p{font-size:1rem;color:var(--text-secondary);margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.6}
+  .btn-coral{
+    display:inline-block;background:var(--coral);color:var(--navy);
+    font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;
+    padding:16px 44px;border-radius:8px;text-decoration:none;transition:all .25s ease;
+  }
+  .btn-coral:hover{background:var(--coral-soft);transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,153,141,.25)}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .hero-inner{animation:fadeUp .7s ease both}
+
+  /* ═══════ HAMBURGER TOGGLE ═══════ */
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;z-index:200}
+  .nav-toggle span{display:block;width:22px;height:2px;background:#fff;margin:5px 0;transition:all .3s}
+  .nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .nav-toggle.active span:nth-child(2){opacity:0}
+  .nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+  /* ═══════ RESPONSIVE ═══════ */
+  @media(max-width:768px){
+    .nav{padding:16px 20px}
+    .nav-logo svg,.nav-star{width:28px;height:28px}
+    .nav-wordmark{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:800}
+    .nav-subtitle{font-size:.38rem;letter-spacing:.12em}
+    .nav-toggle{display:block}
+    .nav-links{
+      display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+      background:var(--navy);flex-direction:column;align-items:center;
+      justify-content:center;gap:28px;z-index:150;
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{font-size:1.1rem;color:rgba(255,255,255,.85)}
+    .nav-links .nav-cta{padding:14px 32px;font-size:1rem}
+    
+
+
+    .hero{padding:120px 20px 64px;min-height:auto}
+    .hero h1{font-size:2rem}
+    .hero p{font-size:.9rem;max-width:100%}
+    .hero-inner{max-width:100%;text-align:left}
+    .hero-cta{font-size:.9rem;padding:14px 32px}
+
+    section[style*="padding"]{padding-left:20px !important;padding-right:20px !important}
+
+    [style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns: 1fr 1fr"]{
+      grid-template-columns:1fr !important;
+    }
+    [style*="padding:44px 48px"]{padding:36px 20px 24px !important}
+
+    .problem-grid,.sol-grid,.better-grid,.how-grid,.trust-grid,
+    .pricing-grid,.founders-row,.founder-row,.offer-grid,.role-columns,
+    .cards-pair,.origin-grid,.perspective-grid,.why-grid,
+    .scope-grid,.how-refer-grid,.provider-faq-grid{
+      grid-template-columns:1fr !important;
+    }
+    .faq-layout{grid-template-columns:1fr !important;gap:0 !important}
+    .faq-nav{display:none}
+    .main-layout{grid-template-columns:1fr !important}
+    .process-grid{grid-template-columns:1fr 1fr !important}
+    .field-row{grid-template-columns:1fr !important}
+    .field-row-3{flex-direction:column}
+
+    .problem-sticky,.origin-left,.perspective-left,.why-left,.scope-left{position:static}
+
+    h2{font-size:1.5rem !important}
+    .bottom-cta h2{font-size:1.6rem !important}
+    .hero-content h1{font-size:2rem !important}
+
+    .hero-subtitle{font-size:.82rem}
+    .btn-coral{padding:14px 36px;font-size:.92rem}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><svg class="nav-star" width="38" height="38" viewBox="0 0 100 112" fill="none"><path d="M50 0 L58 48 L100 56 L58 64 L50 112 L42 64 L0 56 L42 48 Z" fill="#E8998D"/></svg><div style="line-height:1"><span class="nav-wordmark">NOVINWAY</span><span class="nav-subtitle">NEURODIVERGENT FAMILY SUPPORT</span></div></a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open');this.classList.toggle('active')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/providers">For Providers</a>
+    <a href="/faq">FAQ</a>
+    <a href="/careers">Careers</a>
+    <a href="/contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Frequently asked questions</h1>
+    <p>If you don't find what you're looking for, reach out. We're happy to talk through it.</p>
+  </div>
+</section>
+
+<section class="faq-layout">
+
+  <!-- SIDEBAR -->
+  <div class="faq-nav">
+    <a class="faq-nav-item active" data-target="general">General</a>
+    <a class="faq-nav-item" data-target="childcare">Childcare</a>
+    <a class="faq-nav-item" data-target="family-support">Family Support</a>
+    <a class="faq-nav-item" data-target="logistics">Billing & Logistics</a>
+    <a href="/contact" class="faq-nav-cta">
+      <h4>Don't see your question?</h4>
+      <p>Reach out and we'll answer it directly.</p>
+    </a>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="faq-content">
+
+    <div class="faq-group" id="general">
+      <div class="faq-group-label label-general">General</div>
+      <div class="faq-item">
+        <div class="faq-q">How is Novinway different from a nanny agency?</div>
+        <div class="faq-a">Nanny agencies match you with a caregiver and move on. Novinway trains, employs, and supervises your caregiver on an ongoing basis. Every caregiver is a W-2 employee trained specifically for your child by a board-certified behavior analyst. We handle scheduling, backup coverage, and quality oversight. Beyond childcare, we also offer Family Support coordination - a dedicated coordinator who handles the neurodivergent-specific logistics you're managing alone. No agency does both.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is Novinway a therapy or clinical service?</div>
+        <div class="faq-a">No. Novinway is nonclinical. We do not diagnose, treat, or provide ABA or any other therapy. We do not bill insurance for clinical services. Our behavior analyst's expertise informs how we train caregivers and design our service - but what we deliver is childcare and family coordination, not therapy.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What ages do you serve?</div>
+        <div class="faq-a">We serve children and teens of all ages. For younger children, care often looks like structured support around routines and sensory needs. For older children and teenagers, it may look more like a consistent companion - someone they trust and look forward to spending time with. Family Support applies to families with children of any age navigating neurodivergent-specific logistics and services.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need a diagnosis to use Novinway?</div>
+        <div class="faq-a">No formal diagnosis is required to use our childcare services. If your child has needs that require a caregiver with specialized training - whether or not there's a formal diagnosis - we can likely help. For Family Support, the service is designed around the logistics and systems that typically come with a neurodivergent diagnosis, so it's most relevant to families actively navigating those systems.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where do you serve?</div>
+        <div class="faq-a">The DC metro area: Washington DC, Maryland (including Montgomery County, Prince George's County, and surrounding areas), and Northern Virginia. Childcare is in-home or community-based. Family Support coordination can be delivered remotely for most tasks.</div>
+      </div>
+    </div>
+
+    <div class="faq-group" id="childcare">
+      <div class="faq-group-label label-childcare">Childcare</div>
+      <div class="faq-item">
+        <div class="faq-q">What if my child has aggressive behaviors?</div>
+        <div class="faq-a">We don't screen families out because their child is "too hard." Our caregivers are trained by a behavior analyst to handle challenging behaviors safely and with dignity. During the Care Profile process, we learn about your child's behavioral patterns, triggers, and what strategies have worked. That information directly shapes how we train your caregiver. If your child has behaviors that require more intensive support, we'll be upfront about what we can and can't provide.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is the Care Profile?</div>
+        <div class="faq-a">Before your first visit, our behavior analyst gathers detailed information about your child: routines, preferences, communication style, sensory needs, behavioral patterns, and what's worked (and hasn't) with previous caregivers. This becomes the training foundation for your caregiver and is updated as your child grows and needs change.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Will my child have the same caregiver every time?</div>
+        <div class="faq-a">That's the goal. Membership families receive dedicated caregiver matching - we prioritize assigning the same person to your child consistently. If your primary caregiver is unavailable, we provide a trained backup who has access to your child's Care Profile. Flex families receive best-effort consistency, but because scheduling is on-demand, we can't guarantee the same caregiver every visit.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's your caregiver screening process?</div>
+        <div class="faq-a">Every caregiver passes FBI and local background checks, provides 3+ verified references, and completes an in-person interview process. They receive behavior analyst-designed training before being matched with any family. We hire selectively and pay above market rate because we want people who are genuinely good at this work and will stay.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you provide overnight care?</div>
+        <div class="faq-a">Not currently. Our standard service covers daytime and evening hours. If you have a specific need for overnight care, reach out and we can discuss what might be possible.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can my caregiver take my child into the community?</div>
+        <div class="faq-a">Yes. Our caregivers can provide care in your home or in community settings - parks, therapy appointments, activities, errands. Community-based care is part of the Care Profile so your caregiver knows your child's needs in different environments.</div>
+      </div>
+    </div>
+
+    <div class="faq-group" id="family-support">
+      <div class="faq-group-label label-support">Family Support</div>
+      <div class="faq-item">
+        <div class="faq-q">What does the Family Support Coordinator actually do?</div>
+        <div class="faq-a">Whatever neurodivergent-specific logistics you're currently handling yourself. That might include provider communication and follow-ups, benefits paperwork, waitlist management, program research, fitting your childcare schedule around therapy and school, transportation and appointment logistics, school coordination on non-IEP matters, or maintaining a master calendar across all providers and services. The scope depends on your family's situation - if a neurotypical family wouldn't have the problem, it's in scope.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What doesn't Family Support cover?</div>
+        <div class="faq-a">General household tasks that any family would deal with. The test is: would a neurotypical family have this problem? If yes, it's out of scope. Scheduling a plumber is out. Arranging specialized transportation between therapy appointments is in. Grocery shopping is out. Coordinating a restricted diet with your child's nutritionist is a gray area we'd discuss.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I need an advocate or attorney?</div>
+        <div class="faq-a">Your Family Support Coordinator maintains relationships with vetted IEP advocates, special education attorneys, and other specialists in the DC metro area. When a situation comes up that needs that kind of support - an IEP meeting, a school placement dispute, a legal question - they connect you to the right person. You don't have to find them yourself.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need to also use Novinway's childcare to get Family Support?</div>
+        <div class="faq-a">No. Each service works independently. You can use Family Support without childcare, childcare without Family Support, or both. If you do use both, childcare members receive Family Support at a reduced rate - but there's no requirement to bundle.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How much time does the coordinator spend on my family?</div>
+        <div class="faq-a">It varies. Some families need heavy support in the first month - building provider maps, researching programs, handling paperwork - and lighter maintenance after that. Others need steady coordination work every month. Your coordinator's time is driven by your family's actual needs, not a fixed hourly allotment.</div>
+      </div>
+    </div>
+
+    <div class="faq-group" id="logistics">
+      <div class="faq-group-label label-logistics">Billing & Logistics</div>
+      <div class="faq-item">
+        <div class="faq-q">Are there contracts or cancellation fees?</div>
+        <div class="faq-a">No long-term contracts for any service. Childcare memberships and Family Support are both month-to-month - cancel either with 30 days' notice. Individual membership bookings can be cancelled with 24-hour notice at no penalty, and we work with families on emergencies and illness. Flex bookings require 48-hour notice.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you accept insurance?</div>
+        <div class="faq-a">No. Novinway is a nonclinical service and does not bill insurance. We can provide documentation of services for families who want to seek reimbursement through flexible spending accounts (FSA), dependent care accounts, or similar programs, but we cannot guarantee eligibility.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's included in my hourly rate?</div>
+        <div class="faq-a">Your rate covers the caregiver, scheduling coordination, backup coverage, ongoing quality oversight, and behavior analyst-designed training specific to your child. There are no hidden fees beyond what's listed on the pricing page.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">When are you launching?</div>
+        <div class="faq-a">We're welcoming a limited number of founding families beginning Fall 2026. If you're interested, reach out now so we can start the conversation and make sure you're on our list.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="bottom-cta">
+  <h2>Still have questions?</h2>
+  <p>We're happy to talk through anything that isn't covered here. Every family's situation is different.</p>
+  <a href="/contact" class="btn-coral">Get in touch</a>
+</section>
+
+<script>
+// Accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const group = item.parentElement;
+    const wasOpen = item.classList.contains('open');
+    group.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Sidebar nav scroll + active state
+const navItems = document.querySelectorAll('.faq-nav-item[data-target]');
+const groups = document.querySelectorAll('.faq-group');
+
+navItems.forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.getElementById(item.dataset.target);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Update active nav on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navItems.forEach(n => n.classList.remove('active'));
+      const match = document.querySelector(`.faq-nav-item[data-target="${entry.target.id}"]`);
+      if (match) match.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+groups.forEach(g => observer.observe(g));
+</script>
+
+
+<!-- FOOTER -->
+<footer style="background:#141F37;padding:44px 48px 28px;color:#fff;font-family:'DM Sans',sans-serif;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:36px;">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <a href="/" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">Home</a>
+        <a href="/about" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">About</a>
+        <a href="/pricing" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">Pricing</a>
+        <a href="/providers" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">For Providers</a>
+        <a href="/faq" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">FAQ</a>
+        <a href="/careers" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">Careers</a>
+        <a href="/contact" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">Contact</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <a href="mailto:hello@novinway.com" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">hello@novinway.com</a>
+        <a href="tel:+13014859834" style="font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;">(301) 485-9834</a>
+        <span style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5;margin-top:4px;">451 N Hungerford Dr, STE 119-261<br>Rockville, MD 20850</span>
+        <span style="font-size:13px;color:rgba(255,255,255,0.45);margin-top:2px;">Serving DC, Maryland, and Virginia</span>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:16px;">
+      <p style="font-size:12px;color:rgba(255,255,255,0.3);margin:0 0 6px;">Novinway is a private-pay childcare and family support service. We do not provide medical, therapeutic, or clinical services.</p>
+      <p style="font-size:12px;color:r
